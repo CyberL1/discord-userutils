@@ -31,10 +31,11 @@ for (const category of categories) {
   }
 }
 
-console.log(commands);
-
-await rest.put(`/applications/${process.env.CLIENT_ID}/commands`, {
-  body: commands,
-});
+await rest.put(
+  `/applications/${Buffer.from(process.env.BOT_TOKEN.split(".")[0], "base64")}/commands`,
+  {
+    body: commands,
+  },
+);
 
 console.log("Deploy done");

@@ -2,7 +2,7 @@ export default {
   run: async (interaction) => {
     const emojiId = interaction.options.getString("emoji");
     const emoji = await interaction.client.rest.get(
-      `/applications/${process.env.CLIENT_ID}/emojis/${emojiId}`,
+      `/applications/${interaction.client.user.id}/emojis/${emojiId}`,
     );
 
     const embed = {
@@ -37,7 +37,7 @@ export default {
 
   autocomplete: async (interaction) => {
     const { items } = await interaction.client.rest.get(
-      `/applications/${process.env.CLIENT_ID}/emojis`,
+      `/applications/${interaction.client.user.id}/emojis`,
     );
 
     const focusedValue = interaction.options.getFocused();
