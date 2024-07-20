@@ -13,7 +13,7 @@
     ]
   },
   {
-    "name": "info",
+    "name": "emoji-info",
     "description": "Get info on an emoji",
     "options": [
       {
