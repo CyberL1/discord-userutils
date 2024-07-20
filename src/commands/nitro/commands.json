@@ -1,6 +1,6 @@
 [
   {
-    "name": "send",
+    "name": "send-emoji",
     "description": "Send a custom emoji without nitro",
     "options": [
       {
