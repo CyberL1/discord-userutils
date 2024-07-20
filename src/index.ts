@@ -33,7 +33,7 @@ for (const category of categories) {
 
   for (const file of commandFiles) {
     const { default: command } = await import(`#commands/${category}/${file}`);
-    const commandName = file.split(".")[0];
+    const commandName = command.name || file.split(".")[0];
 
     console.log(`Loading "${commandName}" command`);
 

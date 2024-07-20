@@ -4,10 +4,10 @@ export default {
     const cmd = interaction.client.commands.get(command);
 
     if (cmd) {
-      if (interaction.isChatInputCommand()) {
-        cmd.run(interaction);
-      } else if (interaction.isAutocomplete()) {
+      if (interaction.isAutocomplete()) {
         cmd.autocomplete(interaction);
+      } else {
+        cmd.run(interaction);
       }
     }
   },
