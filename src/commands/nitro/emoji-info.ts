@@ -1,9 +1,15 @@
+import {
+  AutocompleteInteraction,
+  ChatInputCommandInteraction,
+  Emoji,
+} from "discord.js";
+
 export default {
-  run: async (interaction) => {
+  run: async (interaction: ChatInputCommandInteraction) => {
     const emojiId = interaction.options.getString("emoji");
-    const emoji = await interaction.client.rest.get(
+    const emoji = (await interaction.client.rest.get(
       `/applications/${interaction.client.user.id}/emojis/${emojiId}`,
-    );
+    )) as Emoji;
 
     const embed = {
       title: "Emoji info",
@@ -35,10 +41,10 @@ export default {
     });
   },
 
-  autocomplete: async (interaction) => {
-    const { items } = await interaction.client.rest.get(
+  autocomplete: async (interaction: AutocompleteInteraction) => {
+    const { items } = (await interaction.client.rest.get(
       `/applications/${interaction.client.user.id}/emojis`,
-    );
+    )) as { items: Emoji[] };
 
     const focusedValue = interaction.options.getFocused();
     const emojis = items
